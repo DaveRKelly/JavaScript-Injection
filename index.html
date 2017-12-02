@@ -2,6 +2,8 @@
     <head>
         <title>Shopping Cart</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <h1 id="title"></h1>
     <body>
@@ -27,17 +29,13 @@
                             <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb" style="vertical-align: middle;"></td>
                             <td>
                                 <div class="quantity" style="display: inline-block; vertical-align: middle;">
-                                    <button class="plus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="plus.svg" alt="" />
-                                    </button>
-                                    <input type="text" name="name" value="1" style="width: 50px; text-align: right; vertical-align: middle;">
-                                    <button class="minus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="minus.svg" alt="" />
-                                    </button>
+                                    <input type="button" value="-" class="minus-btn" field="item1" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item1" name="item1" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item1" style="vertical-align: middle;" />
                                 </div>
                             </td>
                             <td>Design Bundle Package</td>
-                            <td>$79.00</td>
+                            <td class="item1price" field="79"></td>
                             <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
                         </tr>
                         <tr class="productitm">
@@ -45,17 +43,13 @@
                             <td><img src="https://i.imgur.com/RkzoXzZ.png" class="thumb" style="vertical-align: middle;"></td>
                             <td>
                                 <div class="quantity" style="display: inline-block; vertical-align: middle;">
-                                    <button class="plus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="plus.svg" alt="" />
-                                    </button>
-                                    <input type="text" name="name" value="1" style="width: 50px; text-align: right; vertical-align: middle;">
-                                    <button class="minus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="minus.svg" alt="" />
-                                    </button>
+                                    <input type="button" value="-" class="minus-btn" field="item2" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item2" name="item2" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item2" style="vertical-align: middle;" />
                                 </div>
                             </td>
                             <td>Stuff on my Cat: The Book</td>
-                            <td>$8.95</td>
+                            <td class="item2price" field="8.95"></td>
                             <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
                         </tr>
                         <tr class="productitm">
@@ -63,17 +57,13 @@
                             <td><img src="https://i.imgur.com/vZ26Uwy.png" class="thumb" style="vertical-align: middle;"></td>
                             <td>
                                 <div class="quantity" style="display: inline-block; vertical-align: middle;">
-                                    <button class="plus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="plus.svg" alt="" />
-                                    </button>
-                                    <input type="text" name="name" value="1" style="width: 50px; text-align: right; vertical-align: middle;">
-                                    <button class="minus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="minus.svg" alt="" />
-                                    </button>
+                                    <input type="button" value="-" class="minus-btn" field="item3" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item3" name="item3" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item3" style="vertical-align: middle;" />
                                 </div>
                             </td>
                             <td>SpongeBob's First 100 Episodes</td>
-                            <td>$75.00</td>
+                            <td class="item3price" field="75"></td>
                             <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
                         </tr>
                         <tr class="productitm" style="vertical-align: middle;">
@@ -81,18 +71,14 @@
                             <td><img src="https://i.imgur.com/tEdRnz4.png" class="thumb" style="vertical-align: middle;"></td>
                             <td>
                                 <div class="quantity" style="display: inline-block; vertical-align: middle;">
-                                    <button class="plus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="plus.svg" alt="" />
-                                    </button>
-                                    <input type="text" name="name" value="1" style="width: 50px; text-align: right; vertical-align: middle;">
-                                    <button class="minus-btn" type="button" name="button" style="vertical-align: middle;">
-                                        <img src="minus.svg" alt="" />
-                                    </button>
+                                    <input type="button" value="-" class="minus-btn" field="item4" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item4" name="item4" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item4" style="vertical-align: middle;" />
                                 </div>
                             </td>
-                            <td style="vertical-align: middle;">JavaScript &amp; jQuery: Inject Code</td>
-                            <td style="vertical-align: middle;">$27.50</td>
-                            <td style="vertical-align: middle;"><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                            <td>JavaScript &amp; jQuery: Inject Code</td>
+                            <td class="item4price" field="27.5"></td>
+                            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
                         </tr>
 
                         <!-- subtotal -->
@@ -103,16 +89,22 @@
                             <td id="price"></td>
                             <td>&nbsp;</td>
                         <!-- shipping and tax -->
-                        <tr class="extracosts">
-                            <td class="light">Shipping &amp; Tax</td>
+                        <tr class="tax">
+                            <td class="light">Sales Tax</td>
                             <td colspan="2" class="light"></td>
-                            <td id="shippingandtax"></td>
+                            <td id="tax"></td>
                             <td>&nbsp;</td>
                         </tr>
+                        <!-- Shipping -->
+                        <tr class="shipping">
+                            <td class="light">Shipping</td>
+                            <td colspan="2" class="light"></td>
+                            <td id="shipping"></td>
+                            <td>&nbsp;</td>
                         <!-- coupon -->
                         <tr class="coupon">
                             <td class="light">Coupon Code</td>
-                            <td id="coupon"><input type="text" name="couponcode" style="width: 90px;"></td>
+                            <td id="coupon"><input type="text" name="couponcode" style="width: 120px;"></td>
                             <td style="text-align: left;"><button type="button" style="margin-left: 15px;">Submit code</button>
                             <td id="coupondiscount"></td>
                             <td>&nbsp;</td>
@@ -120,7 +112,7 @@
                         <tr class="totalprice">
                             <td class="light">Total:</td>
                             <td colspan="2">&nbsp;</td>
-                            <td colspan="2"><span class="thick">$225.45</span></td>
+                            <td colspan="2"><span class="thick"></span></td>
                         </tr>
 
                         <!-- checkout btn -->

@@ -147,11 +147,11 @@ tr.productitm {
   text-align: center;
 }
 
-tr.subtotal, tr.extracosts, tr.coupon, tr.totalprice {
+tr.subtotal, tr.shipping, tr.tax, tr.coupon, tr.totalprice {
   height: 35px;
   line-height: 35px;
 }
-tr.subtotal, tr.coupon {
+tr.subtotal, tr.shipping, tr.totalprice {
   background: #e4edf4;
 }
 

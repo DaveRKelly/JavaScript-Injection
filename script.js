@@ -1,5 +1,10 @@
 'use strict'
 
+var code = '';
+
+//[[Code 1, Discount 1], ..., [Code n,Discount n]]
+var acceptableCouponCodes = [['BLACKFRIDAY', .2], ['CYBERMONDAY', .4], ['THANKSGIVING', .6], ['CHRISTMAS', .8]];
+
 jQuery(document).ready(function() {
 
 	//Insert all of the values for the document
@@ -8,7 +13,7 @@ jQuery(document).ready(function() {
 	}
 
 	//Decrement value
-	$('.minus-btn').click(function (e) {
+	$('.minus-btn').click(function(e) {
 		//Have the button stop acting like a button
 		e.preventDefault();
 		//Get the field name
@@ -28,7 +33,7 @@ jQuery(document).ready(function() {
 	});
 
 	//Increment value
-	$('.plus-btn').click(function (e) {
+	$('.plus-btn').click(function(e) {
 		//Have the button stop acting like a button
 		e.preventDefault();
 		//Get the field name
@@ -47,12 +52,12 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	$('.numItems').focusin((e) => {
-		console.log("Num items focus in");
-	});
-
-	$('.numItems').focusout((e) => {
-		console.log("Num items focus out");
+	$('#submitcode').click(function(e) {
+		var code = $('input[name=couponcode]').val();
+		console.log(code);
+		console.log(acceptableCouponCodes.indexOf('code'));
+		console.log(acceptableCouponCodes[acceptableCouponCodes.indexOf(code)][1]);
+		updateCode(code);
 	});
 })
 
@@ -74,10 +79,12 @@ function updateSubtotal() {
 		updateTax();
 }
 
+function getCouponCode() {
+	return code;
+}
+
 function hasCouponCode() {
-	var hasCode;
-	console.log("hascouponcode");
-	return hasCode;
+	return getCouponCode() === '' ? false : true;
 }
 
 function updateTax() {
@@ -92,10 +99,10 @@ function updateShipping() {
 
 function updateTotal() {
 	var total = 0;
-	total += ($('#subtotal').html() != '' ? getPrice($('#subtotal').html())       : 0);
-	total += ($('#tax').html()      != '' ? getPrice($('#tax').html())            : 0);
-	total += ($('#shipping').html() != '' ? getPrice($('#shipping').html())       : 0);
-	total += ($('#coupondiscount').html()    != '' ? getPrice($('#coupondiscount').html()) : 0);
+	total += ($('#subtotal').html()       != '' ? getPrice($('#subtotal').html())       : 0);
+	total += ($('#tax').html()            != '' ? getPrice($('#tax').html())            : 0);
+	total += ($('#shipping').html()       != '' ? getPrice($('#shipping').html())       : 0);
+	total += ($('#coupondiscount').html() != '' ? getPrice($('#coupondiscount').html()) : 0);
 	$('.thick').html(formatPrice(total));
 }
 

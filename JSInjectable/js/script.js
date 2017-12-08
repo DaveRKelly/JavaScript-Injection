@@ -1,16 +1,25 @@
 'use strict'
 
+//The coupon code
 var code = '';
+var discount = 0;
 
-//[[Code 1, Discount 1], ..., [Code n,Discount n]]
-var acceptableCouponCodes = [['BLACKFRIDAY', .2], ['CYBERMONDAY', .4], ['THANKSGIVING', .6], ['CHRISTMAS', .8]];
+//Initialize codes and discounts
+var acceptableCouponCodes = ['blackfriday', 'cybermonday', 'thanksgiving', 'christmas'];
+var discounts = [.2, .4, .6, .8];
 
 jQuery(document).ready(function() {
-
 	//Insert all of the values for the document
 	for(var i=1; i<=4; i++) {
 		updateItemPrice('item'+i, parseInt($('input[name=item'+i+']').val()));
 	}
+
+	//Submit button redirect
+	$('#submitbtn').click(function(e) {
+		$('#cart').hide();
+		$('#hidden').show();
+		$('#amountpaid').html(formatPrice(getPrice($('.thick').html())));
+	});
 
 	//Decrement value
 	$('.minus-btn').click(function(e) {
@@ -54,9 +63,6 @@ jQuery(document).ready(function() {
 
 	$('#submitcode').click(function(e) {
 		var code = $('input[name=couponcode]').val();
-		console.log(code);
-		console.log(acceptableCouponCodes.indexOf('code'));
-		console.log(acceptableCouponCodes[acceptableCouponCodes.indexOf(code)][1]);
 		updateCode(code);
 	});
 })
@@ -75,8 +81,18 @@ function updateSubtotal() {
 		subtotal += getPrice($('.item'+i+'price').html());
 	}
 	$('#subtotal').html(formatPrice(subtotal));
-	if(hasCouponCode()) {}
-		updateTax();
+	discount = hasCouponCode() ? getCouponCodeDiscount() : 0;
+	updateTax();
+}
+
+function updateCode(c) {
+	code = c;
+	updateSubtotal();
+}
+
+function getCouponCodeDiscount() {
+	var index = acceptableCouponCodes.indexOf(code);
+	return acceptableCouponCodes.indexOf(code) == -1 ? 0 : discounts[index];
 }
 
 function getCouponCode() {
@@ -97,12 +113,23 @@ function updateShipping() {
 	updateTotal();
 }
 
+function updateDiscount(total) {
+	var discountAmount = total * discount;
+	if(discountAmount != 0) {
+		$('#coupondiscount').html('-'+formatPrice(discountAmount));
+	} else {
+		$('#coupondiscount').html('');
+	}
+	return discountAmount;
+}
+
 function updateTotal() {
 	var total = 0;
-	total += ($('#subtotal').html()       != '' ? getPrice($('#subtotal').html())       : 0);
-	total += ($('#tax').html()            != '' ? getPrice($('#tax').html())            : 0);
-	total += ($('#shipping').html()       != '' ? getPrice($('#shipping').html())       : 0);
-	total += ($('#coupondiscount').html() != '' ? getPrice($('#coupondiscount').html()) : 0);
+	total += ($('#subtotal').html()       === '' ?      0 : getPrice($('#subtotal').html()));
+	total += ($('#tax').html()            === '' ?      0 : getPrice($('#tax').html()));
+	total += ($('#shipping').html()       === '' ?      0 : getPrice($('#shipping').html()));
+	var _discount = updateDiscount(total);
+	total  = (_discount === total ? total + 0 : total - _discount);
 	$('.thick').html(formatPrice(total));
 }
 

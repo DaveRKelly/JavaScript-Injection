@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>Shopping Cart</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+    </head>
+    <h1 id="title"></h1>
+    <body>
+        <div id="w">
+            <header id="title">
+                <h1>Your shopping cart</h1>
+            </header>
+            <div id="page">
+                <table id="cart">
+                    <thead>
+                        <tr>
+                            <th class="first">Item</th>
+                            <th class="second" style="width: 100px;">Quantity</th>
+                            <th class="third">Product</th>
+                            <th class="fourth">Cost</th>
+                            <th class="fifth">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- shopping cart contents -->
+                        <tr class="productitm">
+                            <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                            <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb" style="vertical-align: middle;"></td>
+                            <td>
+                                <div class="quantity" style="display: inline-block; vertical-align: middle;">
+                                    <input type="button" value="-" class="minus-btn" field="item1" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item1" name="item1" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item1" style="vertical-align: middle;" />
+                                </div>
+                            </td>
+                            <td>Design Bundle Package</td>
+                            <td class="item1price" field="79"></td>
+                            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                        </tr>
+                        <tr class="productitm">
+                            <!-- http://www.amazon.com/Stuff-My-Cat-The-Book/dp/0811855384 -->
+                            <td><img src="https://i.imgur.com/RkzoXzZ.png" class="thumb" style="vertical-align: middle;"></td>
+                            <td>
+                                <div class="quantity" style="display: inline-block; vertical-align: middle;">
+                                    <input type="button" value="-" class="minus-btn" field="item2" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item2" name="item2" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item2" style="vertical-align: middle;" />
+                                </div>
+                            </td>
+                            <td>Stuff on my Cat: The Book</td>
+                            <td class="item2price" field="8.95"></td>
+                            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                        </tr>
+                        <tr class="productitm">
+                            <!-- http://www.amazon.com/SpongeBob-SquarePants-The-First-Episodes/dp/B002DYJTVW -->
+                            <td><img src="https://i.imgur.com/vZ26Uwy.png" class="thumb" style="vertical-align: middle;"></td>
+                            <td>
+                                <div class="quantity" style="display: inline-block; vertical-align: middle;">
+                                    <input type="button" value="-" class="minus-btn" field="item3" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item3" name="item3" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item3" style="vertical-align: middle;" />
+                                </div>
+                            </td>
+                            <td>SpongeBob's First 100 Episodes</td>
+                            <td class="item3price" field="75"></td>
+                            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                        </tr>
+                        <tr class="productitm" style="vertical-align: middle;">
+                            <!-- http://www.barnesandnoble.com/w/javascript-and-jquery-david-sawyer-mcfarland/1100405042 -->
+                            <td><img src="https://i.imgur.com/tEdRnz4.png" class="thumb" style="vertical-align: middle;"></td>
+                            <td>
+                                <div class="quantity" style="display: inline-block; vertical-align: middle;">
+                                    <input type="button" value="-" class="minus-btn" field="item4" style="vertical-align: middle;" />
+                                    <input type="text" value="1" class="numItems" field="item4" name="item4" style="width: 35px; text-align: right; vertical-align: middle;" />
+                                    <input type="button" value="+" class="plus-btn" field="item4" style="vertical-align: middle;" />
+                                </div>
+                            </td>
+                            <td>JavaScript &amp; jQuery: Inject Code</td>
+                            <td class="item4price" field="27.5"></td>
+                            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                        </tr>
+
+                        <!-- subtotal -->
+                        <tr class="subtotal">
+                            <td class="light">Subtotal</td>
+                            <td colspan="2" class="light"></td>
+                            <td id="subtotal"></td>
+                            <td id="price"></td>
+                            <td>&nbsp;</td>
+                        <!-- shipping and tax -->
+                        <tr class="tax">
+                            <td class="light">Sales Tax</td>
+                            <td colspan="2" class="light"></td>
+                            <td id="tax"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <!-- Shipping -->
+                        <tr class="shipping">
+                            <td class="light">Shipping</td>
+                            <td colspan="2" class="light"></td>
+                            <td id="shipping"></td>
+                            <td>&nbsp;</td>
+                        <!-- coupon -->
+                        <tr class="coupon">
+                            <td class="light">Coupon Code</td>
+                            <td id="coupon"><input type="text" name="couponcode" style="width: 120px;"></td>
+                            <td style="text-align: left;"><button type="button" id="submitcode" style="margin-left: 15px;">Submit code</button>
+                            <td id="coupondiscount"></td>
+                            <td>&nbsp;</td>
+                        <!-- total -->
+                        <tr class="totalprice">
+                            <td class="light">Total</td>
+                            <td colspan="2">&nbsp;</td>
+                            <td colspan="2"><span class="thick"></span></td>
+                        </tr>
+
+                        <!-- checkout btn -->
+                        <tr class="checkoutrow">
+                            <td colspan="5" class="checkout"><button id="submitbtn">Checkout Now!</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="hidden">
+                    <h2>You paid <span id="amountpaid"></span></h2>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -61,6 +61,15 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  font-family: 'Fredoka One', Helvetica, Tahoma, sans-serif;
+  color: black;
+  font-size: 3.5em;
+  line-height: 1.1em;
+  padding: 6px 0;
+  font-weight: normal;
+  text-align: center;
+}
 
 /* page structure */
 #w {
@@ -88,6 +97,10 @@ h1 {
   padding: 15px 0;
   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.4);
   -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+#hidden {
+  display: none;
 }
 
 /** cart table **/
@@ -151,6 +164,7 @@ tr.subtotal, tr.shipping, tr.tax, tr.coupon, tr.totalprice {
   height: 35px;
   line-height: 35px;
 }
+
 tr.subtotal, tr.shipping, tr.totalprice {
   background: #e4edf4;
 }

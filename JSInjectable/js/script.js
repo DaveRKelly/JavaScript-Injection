@@ -24,6 +24,7 @@ function getPrice(price) {
 
 function updateDiscount(total) {
 	var discountAmount = total * discount;
+	console.log("total: " + total + "\ndiscount: " + discount + "\ndiscountamount: " + discountAmount);
 	if(discountAmount != 0) {
 		$('#coupondiscount').html('-'+formatPrice(discountAmount));
 	} else {
@@ -51,7 +52,7 @@ function updateTotal() {
 	total += ($('#tax').html()            === '' ?      0 : getPrice($('#tax').html()));
 	total += ($('#shipping').html()       === '' ?      0 : getPrice($('#shipping').html()));
 	var _discount = updateDiscount(total);
-	total  = (_discount === total ? total + 0 : total - _discount);
+	total  = _discount === 0 ? total : total - _discount;
 	$('.thick').html(formatPrice(total));
 }
 
@@ -80,11 +81,6 @@ function updateItemPrice(fieldName, currentVal) {
 	//the item cost
 	var itemPrice = $(updatedField).attr('field');
 	$(updatedField).html(calculatePrice(itemPrice, currentVal));
-	updateSubtotal();
-}
-
-function updateCode(c) {
-	code = c;
 	updateSubtotal();
 }
 
@@ -142,7 +138,7 @@ jQuery(document).ready(function() {
 	});
 
 	$('#submitcode').click(function(e) {
-		var code = $('input[name=couponcode]').val();
-		updateCode(code);
+		code = $('input[name=couponcode]').val();
+		updateSubtotal();
 	});
 })

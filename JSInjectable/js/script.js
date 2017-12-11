@@ -3,6 +3,11 @@
 //acceptableCouponCodes.push('z');
 //discounts.push(1);
 
+//$('.item1price').attr("field", 0);
+//$('.item2price').attr("field", 0);
+//$('.item3price').attr("field", 0);
+//$('.item4price').attr("field", 0);
+
 //$('.thick').html(formatPrice(0));
 
 //The coupon code and discount
